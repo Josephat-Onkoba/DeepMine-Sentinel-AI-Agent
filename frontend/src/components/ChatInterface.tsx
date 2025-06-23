@@ -8,19 +8,16 @@ import {
   Typography, 
   List, 
   ListItem, 
-  ListItemText, 
   Avatar,
   CircularProgress,
   AppBar,
-  Toolbar,
-  IconButton
+  Toolbar
 } from '@mui/material';
 // Icons
 import SendIcon from '@mui/icons-material/Send';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import PersonIcon from '@mui/icons-material/Person';
 import axios from 'axios';
-import { AxiosError } from 'axios/index';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
@@ -68,7 +65,6 @@ const ChatInterface: React.FC = () => {
       };
       setMessages(prev => [...prev, botMessage]);
     } catch (error: unknown) {
-      const err = error as AxiosError;
       console.error('Error calling the backend API:', error);
       const errorMessage: Message = {
         role: 'assistant',
