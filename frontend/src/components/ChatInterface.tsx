@@ -32,7 +32,7 @@ import axios from 'axios';
 
 // Helper function to get API URL from environment variables
 const getApiUrl = () => {
-  return process.env.REACT_APP_API_URL || 'http://localhost:3001';
+  return process.env.REACT_APP_API_URL;
 };
 
 interface Message {
