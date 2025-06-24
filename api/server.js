@@ -12,7 +12,11 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS || '*',
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Environment variables
@@ -62,7 +66,14 @@ app.post('/api/chat', async (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'healthy' });
+    res.json({ 
+        status: 'healthy',
+        environment: process.env.NODE_ENV || 'development',
+        timestamp: new Date().toISOString(),
+        cors: {
+            allowedOrigins: process.env.ALLOWED_ORIGINS || '*'
+        }
+    });
 });
 
 // Start server

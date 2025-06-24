@@ -32,7 +32,12 @@ import axios from 'axios';
 
 // Helper function to get API URL from environment variables
 const getApiUrl = () => {
-  return process.env.REACT_APP_API_URL;
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+  // Make sure URL has protocol
+  if (apiUrl && !apiUrl.startsWith('http')) {
+    return `https://${apiUrl}`;
+  }
+  return apiUrl;
 };
 
 interface Message {
@@ -108,8 +113,10 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ colorMode, mode }) => {
     setIsLoading(true);
 
     try {
+      const apiUrl = `${getApiUrl()}/api/chat`;
+      console.log('Calling API at:', apiUrl);
       const response = await axios.post<ChatApiResponse>(
-        `${getApiUrl()}/api/chat`,
+        apiUrl,
         { message: input }
       );
 
