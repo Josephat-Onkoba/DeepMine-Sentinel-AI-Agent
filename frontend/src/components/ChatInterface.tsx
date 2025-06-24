@@ -30,8 +30,15 @@ import { motion } from 'framer-motion';
 import '../styles/animations.css';
 import axios from 'axios';
 
-// Helper function to get API URL from environment variables
+// Helper function to get API URL from runtime config
 const getApiUrl = () => {
+  // First check runtime config (which can be modified after deployment)
+  const runtimeConfig = (window as any).RUNTIME_CONFIG;
+  if (runtimeConfig && runtimeConfig.API_URL) {
+    return runtimeConfig.API_URL;
+  }
+  
+  // Fallback to env vars (for development)
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
   // Make sure URL has protocol
   if (apiUrl && !apiUrl.startsWith('http')) {
