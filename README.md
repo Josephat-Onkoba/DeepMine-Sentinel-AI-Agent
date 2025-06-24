@@ -41,3 +41,12 @@ npm start
 2. Open your browser and navigate to `http://localhost:3000`.
 3. Type your message in the chat interface and press Enter or click Send.
 4. The message will be sent to the backend API, which will process it through the AI model and return a response.
+
+## 💬 Example Questions You Could Ask It:
+1. “What are the safety precautions for underground mining during high seismic activity?”
+
+2. “It’s raining heavily in Zone B. Should mining continue?”
+
+3. “Give 3 tips for pre-shift inspection in deep hard-rock mines.”
+
+4. “Are there any dangers in mining near a known fault zone?”
