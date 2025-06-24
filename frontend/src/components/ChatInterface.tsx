@@ -30,6 +30,11 @@ import { motion } from 'framer-motion';
 import '../styles/animations.css';
 import axios from 'axios';
 
+// Helper function to get API URL from environment variables
+const getApiUrl = () => {
+  return process.env.REACT_APP_API_URL || 'http://localhost:3001';
+};
+
 interface Message {
   role: 'user' | 'assistant' | 'system';
   content: string;
@@ -104,7 +109,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ colorMode, mode }) => {
 
     try {
       const response = await axios.post<ChatApiResponse>(
-        'http://localhost:3001/api/chat',
+        `${getApiUrl()}/api/chat`,
         { message: input }
       );
 
