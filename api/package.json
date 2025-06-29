@@ -4,8 +4,9 @@
     "@azure-rest/ai-inference": "latest",
     "@azure/core-auth": "latest",
     "@azure/core-sse": "latest",
-    "express": "^4.18.2",
+    "axios": "^1.10.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2"
   }
 }
